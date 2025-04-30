@@ -53,7 +53,7 @@ commands['verify'] = {
         }
 
         const name = args.slice(1).join(' ');
-        const webhookURL = 'https://your-webhook-url.com'; // <-- sửa lại
+        const webhookURL = 'c5tntlbji165dbkyxqe92b0jv8xsi16j@hook.eu2.make.com'; // <-- sửa lại
 
         axios.post(webhookURL, { name, discord: message.author.username })
             .then(() => {
