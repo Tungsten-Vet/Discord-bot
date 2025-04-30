@@ -42,6 +42,29 @@ commands['help'] = {
     },
 };
 
+const axios = require('axios'); // Nhớ cài: npm install axios
+
+commands['verify'] = {
+    note: 'Xác minh và gửi tên đến webhook',
+    handler: (message) => {
+        const args = message.content.trim().split(' ');
+        if (args.length < 2) {
+            return message.channel.send('❌ Bạn phải nhập tên: `/verify <tên>`');
+        }
+
+        const name = args.slice(1).join(' ');
+        const webhookURL = 'https://your-webhook-url.com'; // <-- sửa lại
+
+        axios.post(webhookURL, { name, discord: message.author.username })
+            .then(() => {
+                message.channel.send(`✅ Đã gửi xác minh với tên: **${name}**`);
+            })
+            .catch(() => {
+                message.channel.send('❌ Gửi webhook thất bại.');
+            });
+    },
+};
+
 client.once('ready', () => {
     console.log(`🤖 Bot đã sẵn sàng với tên: ${client.user.tag}`);
 });
