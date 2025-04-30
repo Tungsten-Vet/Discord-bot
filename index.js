@@ -44,6 +44,7 @@ commands['help'] = {
 
 client.once('ready', () => {
     console.log(`🤖 Bot đã sẵn sàng với tên: ${client.user.tag}`);
+    message.channel.send("Bot đang hoạt động");
 });
 
 client.on('messageCreate', (message) => {
